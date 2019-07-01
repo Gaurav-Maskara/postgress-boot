@@ -27,11 +27,13 @@ public class EmployeeDaoImpl implements EmployeeDao{
 
 	@Override
 	public List<Employee> findAll() {
-		return template.query("select * from employee", new EmployeeRowMapper());
+	   return template.query("select * from employee", new EmployeeRowMapper());
 	}
 	@Override
 	public void insertEmployee(Employee emp) {
-		 final String sql = "insert into employee(employeeId, employeeName , employeeAddress,employeeEmail) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
+		  String sql = "insert into employee(employeeId, employeeName ,employeeEmail, employeeAddress) values(:employeeId,:employeeName,:employeeEmail,:employeeAddress)";
+		 
+		 
 		 
 	        KeyHolder holder = new GeneratedKeyHolder();
 	        SqlParameterSource param = new MapSqlParameterSource()
@@ -39,6 +41,8 @@ public class EmployeeDaoImpl implements EmployeeDao{
 					.addValue("employeeName", emp.getEmployeeName())
 					.addValue("employeeEmail", emp.getEmployeeEmail())
 					.addValue("employeeAddress", emp.getEmployeeAddress());
+	        
+	        
 	        template.update(sql,param, holder);
 	 
 	}

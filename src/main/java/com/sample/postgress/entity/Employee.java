@@ -1,6 +1,12 @@
 package com.sample.postgress.entity;
 
-public class Employee {
+import java.io.Serializable;
+
+import org.springframework.hateoas.ResourceSupport;
+
+public class Employee extends ResourceSupport implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	String employeeId;
 	String employeeName;
