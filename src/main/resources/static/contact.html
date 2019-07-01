@@ -26,6 +26,11 @@
 		  var email=document.getElementById("email").value;
 		  var message=document.getElementById("message").value;
 		  
+		  if(name.trim()==""||email.trim()==""||message.trim()==""){
+			  alert("All the fields are mandatory");
+			  return;
+		  }
+		  
 		  var feedbackData = { name:name, email : email, message : message};
 
 		  var saveData = $.ajax({
